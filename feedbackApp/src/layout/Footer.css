@@ -1,6 +1,14 @@
 .gmailLink {
-  /* background-image: url("../media/gmailLogo.png"); */
-  background-position: center;
-  background-repeat: repeat-x;
-  display: inline;
+  position: absolute;
+  bottom: 0px;
+  flex: auto;
+  left: 50%;
+  height: 15px;
+  width: 15px;
+  margin-bottom: 1.5%;
+  border-radius: 30%;
+}
+footer{
+ width: 10px;
+ height: 10px;
 }
