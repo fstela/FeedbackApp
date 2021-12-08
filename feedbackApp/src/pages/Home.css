@@ -1,8 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap%27');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap%27");
 .homeTitle {
-
-    text-align: left;
-    margin-top: 50px;
-    margin-left: 50px;
-    font-family: 'Playfair Display',serif;
+  background-color: none;
+  text-align: left;
+  justify-items: center;
+  margin: auto;
+  font-family: "Playfair Display", serif;
+  background: rgb(175, 114, 241);
+  background: linear-gradient(
+    90deg,
+    rgba(175, 114, 241, 1) 14%,
+    rgba(255, 168, 64, 1) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
 }

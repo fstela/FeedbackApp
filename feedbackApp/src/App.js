@@ -19,7 +19,7 @@ const App = () => {
             </Route> */}
           </Switch>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </div>
   );

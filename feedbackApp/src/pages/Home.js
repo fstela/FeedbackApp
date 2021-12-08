@@ -6,8 +6,9 @@ const Home = () => {
   console.log("11111");
   return (
     <Layout>
-      <h1 className="text-5xl homeTitle">Rate your course!</h1>
-      <p></p>
+      <h1 className=" xl:text-6xl lg:text-5xl sm:text-4xl text-3xl homeTitle">
+        Rate your course!
+      </h1>
     </Layout>
   );
 };
