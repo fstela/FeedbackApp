@@ -9,7 +9,7 @@ const App = () => {
     <div className="flex flex-col h-screen">
       <Router>
         <Nav />
-        <div className="h-full mb-auto">
+        <div className="mainApp h-full mb-auto">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />

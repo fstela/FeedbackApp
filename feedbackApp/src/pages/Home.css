@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap%27");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap%27');
 .homeTitle {
   background-color: none;
   text-align: left;
@@ -14,4 +15,32 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
+  overflow-wrap: break-word;
+}
+
+.homeDescription {
+  margin-top: 4%;
+  background-color: none;
+  text-align: left;
+  justify-items: center;
+  font-family: 'Quicksand', sans-serif;
+  background: #faab00;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  overflow-wrap: break-word;
+}
+
+.btns{
+  position: relative;
+  margin-top: 5%;
+  justify-content: left;
+  display: flex;
+}
+.btnAccount{
+  margin-right: 7%;
+  padding-right: 1%;
+  border-radius: 20%;
+  background: rgba(163, 163, 163, 0.397);
+  color: rgb(255, 255, 255);
 }

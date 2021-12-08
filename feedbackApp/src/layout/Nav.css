@@ -14,3 +14,7 @@
 #AppText {
     color:#a549e3;
 }
+
+nav {
+    border-bottom: 2px solid lightgray;
+}
