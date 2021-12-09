@@ -9,7 +9,7 @@ const navs = [
 ];
 
 const Nav = () => (
-  <nav className=" grid bg-white p-4 grid-cols-1 sm:grid-cols-2">
+  <nav className="grid bg-white p-4 grid-cols-1 sm:grid-cols-2">
     <div className="col-span-1">
       <label className="Title">
         <b>

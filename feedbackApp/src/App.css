@@ -27,12 +27,7 @@
 .App-link {
   color: #61dafb;
 }
-.mainApp {
-  background-image: url("AdobeStock_369243587.jpeg");
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
