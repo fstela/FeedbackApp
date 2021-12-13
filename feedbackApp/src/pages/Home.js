@@ -20,12 +20,12 @@ const Home = () => {
         <div className="btns">
           <div class="box-1">
             <div class="btn btn-one">
-            <span>HOVER ME</span>
+            <span>Continue as a student</span>
             </div>
           </div>
           <div class="box-2">
-            <div class="btn btn-two">
-            <span>HOVER ME COAIE</span>
+            <div class="btn btn-one btn-teacher">
+            <span>Continue as a teacher</span>
             </div>
           </div>
         </div>

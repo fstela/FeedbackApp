@@ -24,29 +24,49 @@
   overflow-wrap: break-word;
 }
 
+.homeDescription {
+  margin-top: 2%;
+  background-color: none;
+  text-align: left;
+  justify-items: center;
+  font-family: "Quicksand", sans-serif;
+  background: black;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  word-break: break-all;
+}
 
-.box-1 { background-color: #FF6766; 
-        margin-right: 20px;}
-.box-2 { background-color: #3C3C3C; }
+.box-1 {
+  background-color: rgba(154, 60, 255, 0.6);
+  margin-right: 20px;
+  border-radius: 50px;
+}
+
+.box-2 {
+  border:1px solid rgba(154, 60, 255, 0.6);
+  background-color: #fff;
+  border-radius: 50px;
+}
+
 .btn {
-  line-height: 50px;
-  height: 50px;
+  line-height: 40px;
+  height: 40px;
   text-align: center;
-  width: 250px;
+  width: 200px;
   cursor: pointer;
 }
 
 .btn-one {
-  color: #FFF;
+  color: #fff;
   transition: all 0.3s;
   position: relative;
- 
 }
 .btn-one span {
   transition: all 0.3s;
 }
 .btn-one::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -59,19 +79,19 @@
   border-bottom-width: 1px;
   border-top-style: solid;
   border-bottom-style: solid;
-  border-top-color: rgba(255,255,255,0.5);
-  border-bottom-color: rgba(255,255,255,0.5);
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
   transform: scale(0.1, 1);
 }
 .btn-one:hover span {
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 .btn-one:hover::before {
-  opacity: 1; 
-  transform: scale(1, 1); 
+  opacity: 1;
+  transform: scale(1, 1);
 }
 .btn-one::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -79,70 +99,15 @@
   height: 100%;
   z-index: 1;
   transition: all 0.3s;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 .btn-one:hover::after {
-  opacity: 0; 
+  opacity: 0;
   transform: scale(0.1, 1);
 }
 
-/* butonu 2 */
-.btn-two {
-  color: #FFF;
-  transition: all 0.5s;
-  position: relative; 
-}
-.btn-two span {
-  z-index: 2; 
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%; 
-}
-.btn-two::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  transition: all 0.5s;
-  border: 1px solid rgba(255,255,255,0.2);
-  background-color: rgba(255,255,255,0.1);
-}
-.btn-two::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  transition: all 0.5s;
-  border: 1px solid rgba(255,255,255,0.2);
-  background-color: rgba(255,255,255,0.1);
-}
-.btn-two:hover::before {
-  transform: rotate(-45deg);
-  background-color: rgba(255,255,255,0);
-}
-.btn-two:hover::after {
-  transform: rotate(45deg);
-  background-color: rgba(255,255,255,0);
-}
-
-.homeDescription {
-  margin-top: 2%;
-  background-color: none;
-  text-align: left;
-  justify-items: center;
-  font-family: "Quicksand", sans-serif;
-  background: #faab00;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  word-break: break-all;
+.btn-teacher{
+  color: rgba(154, 60, 255, 0.6);
 }
 
 .btns {
