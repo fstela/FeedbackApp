@@ -1,10 +1,13 @@
-import React from 'react'
-import {Layout} from "../layout";
+import React from "react";
+import Authentication from "../layout/Authentication";
+import "./Login.css";
 
-const Login = () => <Layout> 
-    <div>
-        <p>yeee</p>
-    </div>
-</Layout>;
+const Login = () => {
+  return(
+  <div className="loginPage">
+    <Authentication className="authForm"/>
+  </div>
+  )
+};
 
 export default Login;
