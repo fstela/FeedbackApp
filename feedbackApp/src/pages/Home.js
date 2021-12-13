@@ -17,13 +17,17 @@ const Home = () => {
           them!
         </h6>
 
-        <div className="btns p-20 bg-cover card bg-base-200">
-          <button className="btnAccount btn btn-primary">
-            Continue as student
-          </button>
-          <button className="btnAccount btn btn-primary">
-            Continue as teacher
-          </button>
+        <div className="btns">
+          <div class="box-1">
+            <div class="btn btn-one">
+            <span>HOVER ME</span>
+            </div>
+          </div>
+          <div class="box-2">
+            <div class="btn btn-two">
+            <span>HOVER ME COAIE</span>
+            </div>
+          </div>
         </div>
       </Layout>
     </div>
