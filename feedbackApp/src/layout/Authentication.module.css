@@ -1,20 +1,20 @@
 
 
 .auth {
-  margin: 3rem auto;
+  margin: 9rem auto;
   width: 1000px;
   max-width: 25rem;
   border-radius: 6px;
-  background-color: #38015c;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  background-color: none;
+  /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); */
   padding: 1rem;
   text-align: center;
-  
 }
 
 .auth h1 {
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
+  size: 1rem;
 }
 
 .control {

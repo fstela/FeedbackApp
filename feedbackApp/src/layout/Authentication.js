@@ -10,7 +10,7 @@ const Authentication = () => {
   return (
     <div>
       <section className={classes.auth}>
-        <h1>{isLogin ? "Login" : "Sign Up"}</h1>
+        <h1><b>{isLogin ? "Login" : "Please select an account"}</b></h1>
         <form>
           <div className={classes.control}>
             <label htmlFor="email">Your Email</label>
@@ -27,7 +27,7 @@ const Authentication = () => {
               className={classes.toggle}
               onClick={switchAuthModeHandler}
             >
-              {isLogin ? "Create new account" : "Log in with existing account"}
+              {isLogin ? "Create new account" : "Log in with an existing account"}
             </button>
           </div>
         </form>
