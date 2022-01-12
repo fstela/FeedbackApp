@@ -2,27 +2,43 @@ import { useState } from "react";
 import classes from "./Authentication.module.css";
 const Authentication = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [isStudent, setIsStudent] = useState(true);
+  const [isStudentEmailValid, setStudentEmailValid] = useState(true);
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
 
+
+
+  const switchAccountTypeHandler = () => {
+    setIsStudent((prevState) => !prevState);
+  };
+  
+  // const switchStudentEmailValidHandler = () => {
+  //   if(isStudent){
+  //     const regex= '^.*@stud\.ase\.ro$';
+  //     regex.test()
+  //   }
+  // };
+
   return (
-    <div className={classes.sideBarLeft}>
       <section className={classes.auth}>
         <div className={classes.users}>
           <div>
             <img
-              className={classes.logo1}
+              className={!isStudent ? classes.selectedUser : classes.logo}
               src="media/LogoProf.png"
               alt="Logo prof"
+              onClick={isStudent ? switchAccountTypeHandler : 0}
             />
           </div>
           <div>
             <img
-              className={classes.logo2}
+              className={isStudent ? classes.selectedUser : classes.logo}
               src="media/LogoStud.png"
               alt="Logo prof"
+              onClick={!isStudent ? switchAccountTypeHandler : 0}
             />
           </div>
         </div>
@@ -52,7 +68,6 @@ const Authentication = () => {
           </div>
         </form>
       </section>
-    </div>
   );
 };
 
