@@ -15,12 +15,28 @@ const Authentication = () => {
     setIsStudent((prevState) => !prevState);
   };
   
-  // const switchStudentEmailValidHandler = () => {
-  //   if(isStudent){
-  //     const regex= '^.*@stud\.ase\.ro$';
-  //     regex.test()
-  //   }
-  // };
+  const switchStudentEmailValidHandler = () => {
+    if(isStudent){
+      const regex= /^.*@stud\.ase\.ro$/;
+      if(!regex.test()){
+        this.setState({
+          error:"Invalid student email"
+        });
+        return false;
+      }
+      return true;
+    }
+    else{
+      const regex= /^.*@prof\\.ase\.ro$/;
+      if(!regex.test()){
+        this.setState({
+          error:"Invalid professor email"
+        });
+        return false;
+      }
+      return true;
+    }
+  };
 
   return (
       <section className={classes.auth}>
