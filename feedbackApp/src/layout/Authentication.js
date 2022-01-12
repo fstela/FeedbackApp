@@ -8,9 +8,27 @@ const Authentication = () => {
   };
 
   return (
-    <div>
+    <div className={classes.sideBarLeft}>
       <section className={classes.auth}>
-        <h1><b>{isLogin ? "Login" : "Please select an account"}</b></h1>
+        <div className={classes.users}>
+          <div>
+            <img
+              className={classes.logo1}
+              src="media/LogoProf.png"
+              alt="Logo prof"
+            />
+          </div>
+          <div>
+            <img
+              className={classes.logo2}
+              src="media/LogoStud.png"
+              alt="Logo prof"
+            />
+          </div>
+        </div>
+        <h1>
+          <b>{isLogin ? "Login" : "Please select an account"}</b>
+        </h1>
         <form>
           <div className={classes.control}>
             <label htmlFor="email">Your Email</label>
@@ -27,7 +45,9 @@ const Authentication = () => {
               className={classes.toggle}
               onClick={switchAuthModeHandler}
             >
-              {isLogin ? "Create new account" : "Log in with an existing account"}
+              {isLogin
+                ? "Create new account"
+                : "Log in with an existing account"}
             </button>
           </div>
         </form>
