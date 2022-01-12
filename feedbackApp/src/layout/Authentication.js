@@ -1,6 +1,7 @@
 import { useState } from "react";
 import classes from "./Authentication.module.css";
-const Authentication = () => {
+import Home from "../pages/Home";
+const Authentication = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const [isStudent, setIsStudent] = useState(true);
   const [isStudentEmailValid, setStudentEmailValid] = useState(true);
@@ -9,7 +10,13 @@ const Authentication = () => {
     setIsLogin((prevState) => !prevState);
   };
 
-
+  // if(props.data!==null){
+  //   if (props.data.studentToLogIn){
+  //     switchAccountTypeHandler();
+  //     alert("plm");
+  //   }
+  // }
+    
 
   const switchAccountTypeHandler = () => {
     setIsStudent((prevState) => !prevState);
