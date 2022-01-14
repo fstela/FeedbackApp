@@ -3,6 +3,7 @@ import "./App.css";
 import { Home, Login, Activity } from "./pages";
 import { Nav, Footer } from "./layout";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import 'antd/dist/antd.min.css';
 
 const App = () => {
   return (
