@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap%27");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap%27");
 
-.homePage {
-} 
-
 .row{
   display: flex;
   margin-right: -15px;
