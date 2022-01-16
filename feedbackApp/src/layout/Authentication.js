@@ -69,9 +69,9 @@ const Authentication = (props) => {
       })
       .then((data) => {
         const expirationTime = new Date(
-          new Date().getTime() + +data.expiresIn * 1000
+          new Date().getTime() + (+data.expiresIn * 1000)
         );
-        authCtx.login(data.idToken, expirationTime.toISOString);
+        authCtx.login(data.idToken, expirationTime.toISOString());
         history.replace("/Activity");
       })
       .catch((err) => {
