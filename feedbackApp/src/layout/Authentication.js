@@ -72,7 +72,7 @@ const Authentication = (props) => {
           new Date().getTime() + (+data.expiresIn * 1000)
         );
         authCtx.login(data.idToken, expirationTime.toISOString());
-        history.replace("/Activity");
+        history.replace("/ActivityStudent");
       })
       .catch((err) => {
         alert(err.message);
