@@ -13,7 +13,7 @@ const Courses = () =>{
       <div className='container-fluid mb-5'>
         <div className='row'>
           <div className='col-8 mx-auto'>
-            <div class="row gy-3">
+            <div class="row gy-4">
              {
               CourseData.map((val, ind) =>{
                 return <Card key={ind}

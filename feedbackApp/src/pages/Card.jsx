@@ -2,6 +2,7 @@ import React from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import coursePic from '../assets/images/coursePic.jpg';
 import { Link } from "react-router-dom";
+// import './Card.css';
 
 const Card = (props) => {
     return (
@@ -12,7 +13,7 @@ const Card = (props) => {
                     <div className="card-body">
                         <h5 className="card-title font-weight-bold">{props.title}</h5>
                         <p className="card-text">This is a description about the course you are taking.</p>
-                            <Link to="#" className="btn btn-primary">Rate</Link>
+                            <Link className="btn btn-primary" style={{width: '100px'}}>Rate</Link>
                     </div>
                 </div>
             </div>
