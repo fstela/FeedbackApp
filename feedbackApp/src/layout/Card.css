@@ -10,7 +10,7 @@
   bottom: 150px;
   border: 1px solid #ccc;
   background-color: #fff;
-  overflow: scroll;
+  overflow: hidden;
   border-radius: 4px;
   outline: none;
   padding: 20px;
@@ -24,11 +24,29 @@
   justify-items: center;
   justify-self: center;
 }
+
 .emojiFace {
   min-width: 50px;
   min-height: 50px;
   width: 200px;
-  eight: 200px;
-  /* height: 200px;
-    width: 200px; */
+  height: 200px;
+
+}
+
+.emojiHover {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.emojiHover:hover, .emojiHover:focus, .emojiHover:active {
+   -webkit-transform: scale(1.1);
+  transform: scale(1.1); 
 }

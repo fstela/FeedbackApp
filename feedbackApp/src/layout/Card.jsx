@@ -40,16 +40,16 @@ const Card = (props) => {
             onRequestClose={() => setModalIsOpen(false)}
           >
             <div className="grid justify-items-center grid-cols-2 mt-4 sm:mt-0 sm:pr-4 gap-12 emojiGrid">
-              <div className="mb-auto">
+              <div className="mb-auto emojiHover">
                 <img src={SurprisedFace} alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
               </div>
-              <div className="mb-auto">
+              <div className="mb-auto emojiHover">
                 <img src={SmileyFace} alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
               </div>
-              <div className="mb-auto">
+              <div className="mb-auto emojiHover">
                 <img src={AngryFace} alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
               </div>
-              <div className="mb-auto">
+              <div className="mb-auto emojiHover">
                 <img src={ConfusedFace} alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
               </div>
             </div>
