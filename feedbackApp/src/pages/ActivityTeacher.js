@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from "react";
-import {useHistory, useParams} from "react-router-dom"
+import {Link, useHistory, useParams} from "react-router-dom"
 import Modal from "react-modal";
 import "./AddModal.css";
 import "./ActivityTeacher.css"
@@ -12,6 +12,10 @@ const initialState = {
 }
 
 const ActivityTeacher = () => {
+//Activity
+const [data, setData] = useState({});
+
+//Modal
 const [modalIsOpen, setModalIsOpen] = useState(false);
 const [isFeedbackSent, setIsFeedbackSent] = useState(false);
 const sendFeedbackHandler = () => {
@@ -19,7 +23,6 @@ const sendFeedbackHandler = () => {
     setModalIsOpen(false)
   };
 const [state, setState] = useState(initialState);
-const [data, setDate] = useState({});
 const {name, description, duration, accessCode} = state;
 
 const history = useHistory();
@@ -54,6 +57,47 @@ const handleSubmit = (e) => {
         >
           +
         </button>
+        <div style={{marginTop: "20px"}}>
+            <table className="styled-table">
+                <thead>
+                    <tr>
+                        <th style={{textAlign: "center"}}>No.</th>
+                        <th style={{textAlign: "center"}}>Name</th>
+                        <th style={{textAlign: "center"}}>Description</th>
+                        <th style={{textAlign: "center"}}>Duration</th>
+                        <th style={{textAlign: "center"}}>Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                                <th scope="row">{1}</th>
+                                <td>{"Diaconita"}</td>
+                                <td>{"your mom gay"}</td>
+                                <td>{"32"}</td>
+                                <td>{"123"}</td>
+                </tr>
+                <tr>
+                                <th scope="row">{1}</th>
+                                <td>{"Diaconita"}</td>
+                                <td>{"your mom gay"}</td>
+                                <td>{"32"}</td>
+                                <td>{"123"}</td>
+                </tr>
+                <tr>
+                                <th scope="row">{1}</th>
+                                <td>{"Diaconita"}</td>
+                                <td>{"your mom gay"}</td>
+                                <td>{"32"}</td>
+                                <td>{"123"}</td>
+                </tr>
+                {/* {Object.keys(data).map((id, index) => {
+                        // return (
+                            
+                        // )
+                    })} */}
+                </tbody>
+            </table>
+        </div>
         {modalIsOpen ? (
         <>
           <div
