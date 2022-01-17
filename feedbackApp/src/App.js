@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Home, Login, ActivityStudent } from "./pages";
+import { Home, Login, ActivityStudent, ActivityTeacher } from "./pages";
 import { Nav, Footer } from "./layout";
 import { useContext } from "react";
 import {
@@ -23,7 +23,7 @@ const App = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             {authCtx.isLoggedIn && (
-              <Route exact path="/ActivityStudent" component={ActivityStudent} />
+              <Route exact path="/ActivityStudent" component={ActivityTeacher} />
             )}
             <Route path="*">
               <Redirect to="/" />

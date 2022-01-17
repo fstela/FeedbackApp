@@ -8,18 +8,21 @@
     "@testing-library/user-event": "^12.8.3",
     "antd": "^4.18.3",
     "daisyui": "^1.16.2",
+    "firebase": "^9.6.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-emojione": "^5.0.1",
     "react-modal": "^3.14.4",
     "react-particle-effect-button": "^1.0.1",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-service-worker": "^0.1.1",
+    "react-toastify": "^8.1.0",
+    "toastr": "^2.1.4",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
