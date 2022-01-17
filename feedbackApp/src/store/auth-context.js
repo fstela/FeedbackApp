@@ -5,6 +5,7 @@ const AuthContext = React.createContext({
   isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
+  // type: string // student / teacher
 });
 
 let logoutTimer;

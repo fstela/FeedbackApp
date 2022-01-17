@@ -32,6 +32,7 @@ const Authentication = (props) => {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    // student teacher {}
 
     setIsLoading(true);
     let url;

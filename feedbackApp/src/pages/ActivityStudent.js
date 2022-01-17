@@ -1,6 +1,6 @@
 import React from 'react'
-import Card from './Card';
-import CourseData from './CourseData';
+import Card from '../layout/Card';
+import CourseData from '../layout/CourseData';
 
 const ActivityStudent = () =>{
   return (

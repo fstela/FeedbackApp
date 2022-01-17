@@ -1,0 +1,34 @@
+.modalContainer {
+  justify-items: center;
+}
+
+.modal {
+  position: absolute;
+  top: 150px;
+  left: 350px;
+  right: 350px;
+  bottom: 150px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  overflow: scroll;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  justify-items: center;
+  min-width: 100px;
+  min-height: 100px;
+  justify-content: center;
+}
+.emojiGrid {
+  position: relative;
+  justify-items: center;
+  justify-self: center;
+}
+.emojiFace {
+  min-width: 50px;
+  min-height: 50px;
+  width: 200px;
+  eight: 200px;
+  /* height: 200px;
+    width: 200px; */
+}
