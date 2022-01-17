@@ -8,6 +8,7 @@ import "./Card.css";
 
 
 Modal.setAppElement("#root");
+
 const Card = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isFeedbackSent, setIsFeedbackSent] = useState(false);
@@ -15,7 +16,7 @@ const Card = (props) => {
     setIsFeedbackSent((prevState) => !prevState);
     setModalIsOpen(false)
   };
-
+  
   return (
     <>
       <div class="max-w-sm rounded overflow-hidden shadow-lg col-md-4 p-4 col-10 mx-auto m-3">
@@ -25,10 +26,18 @@ const Card = (props) => {
           <p class="text-gray-700 text-base">
             This is a description about the course you are taking.
           </p>
+            <label id="accessCodeText" for="accessCode">Course Access Code: </label>
+            <input type="text" id="accessCode"  ></input>
+          
         </div>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 m-3 rounded"
-          onClick={() => setModalIsOpen(true)}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 m-3 ml-6 rounded"
+          onClick={() =>{
+                if(document.getElementById('accessCode').value.length !== 0){
+                  setModalIsOpen(true)
+                }
+                
+          } }
         >
           Rate
         </button>
@@ -53,9 +62,6 @@ const Card = (props) => {
                 <img src={ConfusedFace} alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
               </div>
             </div>
-            {/* <div>
-            <button onClick={() => setModalIsOpen(false)}>Close</button>
-          </div> */}
           </Modal>
         </div>
       </div>
