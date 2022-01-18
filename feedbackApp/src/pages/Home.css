@@ -25,6 +25,7 @@
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   overflow-wrap: break-word;
+ 
 }
 
 .homeDescription {
@@ -68,6 +69,7 @@
 }
 .btn-one span {
   transition: all 0.3s;
+
 }
 .btn-one::before {
   content: "";
@@ -89,10 +91,12 @@
 }
 .btn-one:hover span {
   letter-spacing: 1px;
+  
 }
 .btn-one:hover::before {
   opacity: 1;
   transform: scale(1, 1);
+ 
 }
 .btn-one::after {
   content: "";
@@ -110,8 +114,13 @@
   transform: scale(0.1, 1);
 }
 
+.btn-teacher span{
+  color:#9A3CFF99;
+  font-weight: 100px;
+}
 .btn-teacher{
   color: rgba(154, 60, 255, 0.6);
+  
 }
 
 .btns {

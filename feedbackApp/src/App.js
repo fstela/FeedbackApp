@@ -23,7 +23,7 @@ const App = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             {authCtx.isLoggedIn && (
-              <Route exact path="/ActivityStudent" component={ActivityTeacher} />
+              <Route exact path="/ActivityStudent" component={ActivityStudent} />
             )}
             <Route path="*">
               <Redirect to="/" />
