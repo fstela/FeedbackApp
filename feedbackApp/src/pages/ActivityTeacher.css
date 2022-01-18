@@ -17,6 +17,11 @@
     padding: 12px 15px;
 }
 
+.styled-table td button {
+    width: 100px;
+    height: 40px;
+}
+
 .styled-table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
@@ -26,31 +31,61 @@
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid rgba(123, 0, 255, 0.815);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.815);
 }
 
 .btn {
     border: none;
     color: white;
-    padding: 5px 8px;
+    padding: 1px 8px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 12px;
     margin: 4px 2px;
     cursor: pointer;
-}
-
-.btn-edit {
-    background-color: #008cba;
-}
-
-.btn-delete {
-    background-color: #f44336;
 }
 
 .btn-view {
     background-color: #e7e7e7;
     color: black;
 }
+
+.btn-view:hover {
+    background-color: #c5c4c4;
+}
+
+.nameViewText,
+.descriptionViewText,
+.durationViewText,
+.accessCodeViewText {
+    color:rgba(0, 0, 0, 0.719)
+}
+
+.emojiGrid {
+    padding-top: 20px;
+    position: relative;
+    justify-items: left;
+    justify-self: center;
+  }
+  
+  .emojiFace {
+    min-width: 40px;
+    min-height: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .addButton {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;
+    background-color: rgba(123, 0, 255, 0.507);
+    margin-top: 20px;
+  }
+
+  .addButton:hover {
+    background-color: rgba(123, 0, 255, 0.815);
+  }
