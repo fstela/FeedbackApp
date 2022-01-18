@@ -3,15 +3,13 @@ module.exports = (sequelize, DataTypes) => {
     accessCode: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
     courseName: {
       type: DataTypes.STRING,
     },
     courseDescription: {
       type: DataTypes.TEXT,
-    },
-    addedTime: {
-      type: DataTypes.DATE,
     },
     durationInMinutes: {
       type: DataTypes.INTEGER,

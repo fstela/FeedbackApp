@@ -6,10 +6,9 @@ const Course = db.course;
 
 const addCourse = async (req, res) => {
   let info = {
-    accessToken: req.body.accessToken,
+    accessCode: req.body.accessCode,
     courseName: req.body.courseName,
     courseDescription: req.body.courseDescription,
-    addedTime: req.body.addedTime,
     duration: req.body.duration,
     feedbackSmiley: req.body.feedbackSmiley,
     feedbackFrowney: req.body.feedbackFrowney,
@@ -18,8 +17,14 @@ const addCourse = async (req, res) => {
     published: req.body.published ? req.body.published : false,
   };
 
-  const course = await Course.create(info);
-  res.status(200).send(course);
+  console.log(info);
+  try {
+    const course = await Course.create(info);
+    res.status(200).send(course);
+  } catch (e) {
+    console.log(e);
+    res.status(405).send({ error: e });
+  }
 
   console.log(course);
 };
@@ -30,20 +35,20 @@ const getAllCourses = async (req, res) => {
 };
 
 const getOneCourse = async (req, res) => {
-  let id = req.body.accessToken;
-  let course = await Course.findOne({ where: { accessToken: id } });
+  let id = req.params.accessCode;
+  let course = await Course.findOne({ where: { accessCode: id } });
   res.send(course);
 };
 
 const updateCourse = async (req, res) => {
-  let id = req.body.accessToken;
-  const course = await Course.update(req.body, { where: { accessToken: id } });
+  let id = req.params.accessCode;
+  const course = await Course.update(req.body, { where: { accessCode: id } });
   res.status(200).send(course);
 };
 
 const deleteCourse = async (req, res) => {
-  let id = req.body.accessToken;
-  await Course.destroy({ where: { accessToken: id } });
+  let id = req.params.accessCode;
+  await Course.destroy({ where: { accessCode: id } });
   res.status(200).send("Course deleted");
 };
 
