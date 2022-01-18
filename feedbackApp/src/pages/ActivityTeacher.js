@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import Modal from "react-modal";
 import SurprisedFace from "../assets/images/SurprisedFace.svg";
 import AngryFace from "../assets/images/AngryFace.svg";
 import SmileyFace from "../assets/images/SmileyFace.svg";
 import ConfusedFace from "../assets/images/ConfusedFace.svg";
 import "./AddModal.css";
 import "./ActivityTeacher.css";
+import axios from "axios";
 
 const initialState = {
   name: "",
@@ -17,25 +17,22 @@ const initialState = {
 
 const ActivityTeacher = () => {
   //Activity
-  const [data, setData] = useState({});
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    const getCoursesData = async () => {
+      const { data } = await axios.get("/api/courses/allCourses");
+      console.log(data);
+      setCourses(data);
+    };
 
+    getCoursesData();
+  }, []);
   //Modal
   const [viewModalIsOpen, setViewModalIsOpen] = useState(false);
   const [isViewFeedbackSent, setIsViewFeedbackSent] = useState(false);
   const sendViewFeedbackHandler = () => {
     setIsViewFeedbackSent((prevState) => !prevState);
     setViewModalIsOpen(false);
-  };
-
-  const varsTest = {
-    name: "Boja",
-    description: "POO",
-    duration: "100",
-    accessCode: "Programming",
-    SurprisedFaceVal: "2",
-    AngryFaceVal: "5",
-    SmileyFaceVal: "7",
-    ConfusedFaceVal: "10"
   };
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -86,21 +83,20 @@ const ActivityTeacher = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">{1}</th>
-              <td>{varsTest.name}</td>
-              <td>{varsTest.description}</td>
-              <td>{varsTest.duration}</td>
-              <td>{varsTest.accessCode}</td>
-              <td>
-                <button
-                  className="btn btn-view"
-                  onClick={() => setViewModalIsOpen(true)}
-                >
-                  <b>View</b>
-                </button>
-              </td>
-              <div className="viewModalContainer">
+            {courses.map(course => {
+              return (
+                <tr>
+                  <th scope="row">{course.id}</th>
+                  <td>{course.courseName}</td>
+                  <td>{course.courseDescription}</td>
+                  <td>{course.durationInMinutes}</td>
+                  <td>{course.accessCode}</td>
+                  <td>
+                    <button className="btn btn-view" onClick={() => setViewModalIsOpen(true)}>
+                      <b>View</b>
+                    </button>
+                  </td>
+                  <div className="viewModalContainer">
                 {viewModalIsOpen ? (
                   <>
                     <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -138,22 +134,22 @@ const ActivityTeacher = () => {
                               >
                                 <label className="nameViewText">
                                   <b>Name: </b>
-                                  {varsTest.name}
+                                  {course.courseName}
                                 </label>
                                 <br></br>
                                 <label className="descriptionViewText">
                                   <b>Description: </b>
-                                  {varsTest.description}
+                                  {course.courseDescription}
                                 </label>
                                 <br></br>
                                 <label className="durationViewText">
                                   <b>Duration: </b>
-                                  {varsTest.duration}
+                                  {course.durationInMinutes}
                                 </label>
                                 <br></br>
                                 <label className="accessCodeViewText">
                                   <b>Access Code: </b>
-                                  {varsTest.accessCode}
+                                  {course.accessCode}
                                 </label>
                                 <div className="grid grid-cols-4 mt-4 sm:mt-0 sm:pr-4 gap-1 emojiGrid">
                                   <div className="mb-auto emojiHover">
@@ -163,7 +159,7 @@ const ActivityTeacher = () => {
                                       className="emojiFace"
                                       onClick={sendFeedbackHandler}
                                     />
-                                    {varsTest.SurprisedFaceVal}
+                                    {course.feedbackSurprised ? course.feedbackSurprised : 0}
                                   </div>
                                   <div className="mb-auto emojiHover">
                                     <img
@@ -172,7 +168,7 @@ const ActivityTeacher = () => {
                                       className="emojiFace"
                                       onClick={sendFeedbackHandler}
                                     />
-                                    {varsTest.SmileyFaceVal}
+                                    {course.feedbackSmiley ? course.feedbackSmiley : 0}
                                   </div>
                                   <div className="mb-auto emojiHover">
                                     <img
@@ -181,7 +177,7 @@ const ActivityTeacher = () => {
                                       className="emojiFace"
                                       onClick={sendFeedbackHandler}
                                     />
-                                    {varsTest.AngryFaceVal}
+                                    {course.feedbackFrowney ? course.feedbackFrowney : 0}
                                   </div>
                                   <div className="mb-auto emojiHover">
                                     <img
@@ -190,7 +186,7 @@ const ActivityTeacher = () => {
                                       className="emojiFace"
                                       onClick={sendFeedbackHandler}
                                     />
-                                    {varsTest.ConfusedFaceVal}
+                                    {course.feedbackConfused ? course.feedbackConfused : 0}
                                   </div>
                                 </div>
                               </form>
@@ -213,57 +209,17 @@ const ActivityTeacher = () => {
                   </>
                 ) : null}
               </div>
-            </tr>
-            <tr>
-              <th scope="row">{1}</th>
-              <td>{"Diaconita"}</td>
-              <td>{"SGBD"}</td>
-              <td>{"32"}</td>
-              <td>{"123"}</td>
-              <td>
-                <button className="btn btn-view">
-                  <b>View</b>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">{1}</th>
-              <td>{"Gramatovici"}</td>
-              <td>{"BCO"}</td>
-              <td>{"32"}</td>
-              <td>{"123456"}</td>
-              <td>
-                <button className="btn btn-view">
-                  <b>View</b>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">{1}</th>
-              <td>{"Gramatovici"}</td>
-              <td>{"BCO"}</td>
-              <td>{"32"}</td>
-              <td>{"123456"}</td>
-              <td>
-                <button className="btn btn-view">
-                  <b>View</b>
-                </button>
-              </td>
-            </tr>
-            {/* {Object.keys(data).map((id, index) => {
-                        // return (
-                            
-                        // )
-                    })} */}
+                </tr>
+              );
+            })}
           </tbody>
-          
         </table>
         <button
-        className="addButton text-white font-bold py-2 px-8 m-3 rounded"
-        onClick={() => setModalIsOpen(true)}
-      >
-        +
-      </button>
+          className="addButton text-white font-bold py-2 px-8 m-3 rounded"
+          onClick={() => setModalIsOpen(true)}
+        >
+          +
+        </button>
       </div>
       {modalIsOpen ? (
         <>

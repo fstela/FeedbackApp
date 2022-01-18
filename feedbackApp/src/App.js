@@ -9,7 +9,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import "antd/dist/antd.min.css";
+// import "antd/dist/antd.min.css";
 import AuthContext from "./store/auth-context";
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             {authCtx.isLoggedIn && (
-              <Route exact path="/ActivityStudent" component={ActivityStudent} />
+              <Route exact path="/ActivityStudent" component={ActivityTeacher} />
             )}
             <Route path="*">
               <Redirect to="/" />

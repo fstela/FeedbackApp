@@ -3,12 +3,12 @@ const cors = require('cors')
 
 const app= express()
 
-var corOptions = {
-    origin: "https://localhost:8081"
-}
+// var corOptions = {
+//     origin: "https://localhost:8081"
+// }
 
 
-app.use(cors(corOptions))
+// app.use(cors(corOptions))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
