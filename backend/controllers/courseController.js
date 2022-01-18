@@ -9,7 +9,7 @@ const addCourse = async (req, res) => {
     accessCode: req.body.accessCode,
     courseName: req.body.courseName,
     courseDescription: req.body.courseDescription,
-    duration: req.body.duration,
+    durationInMinutes: req.body.durationInMinutes,
     feedbackSmiley: req.body.feedbackSmiley,
     feedbackFrowney: req.body.feedbackFrowney,
     feedbackSurprised: req.body.feedbackSurprised,

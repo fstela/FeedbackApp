@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
 import SurprisedFace from "../assets/images/SurprisedFace.svg";
 import AngryFace from "../assets/images/AngryFace.svg";
 import SmileyFace from "../assets/images/SmileyFace.svg";
@@ -15,7 +14,19 @@ const initialState = {
   accessCode: "",
 };
 
-const ActivityTeacher = () => {
+let selectedData = {
+  courseName: "",
+  courseDescription: "",
+  durationInMinutes: null,
+  accessCode: "",
+  feedbackSurprised: null,
+  feedbackSmiley: null,
+  feedbackFrowney: null,
+  feedbackConfused: null,
+};
+
+const ActivityTeacher = (history) => {
+
   //Activity
   const [courses, setCourses] = useState([]);
   useEffect(() => {
@@ -27,6 +38,21 @@ const ActivityTeacher = () => {
 
     getCoursesData();
   }, []);
+
+  const [selectedCourse, setSelectedCourse] = useState();
+  const getDetailSelectedCourse = (accessCode) => {
+    const getSelectedCourseData = async () => {
+      const {data} = await axios.get("/api/courses/" + accessCode);
+      
+      setSelectedCourse(data);
+      console.log("#############" + data);
+      selectedData = data;
+      setViewModalIsOpen(true);
+    };
+    getSelectedCourseData(selectedData);
+    
+  };
+
   //Modal
   const [viewModalIsOpen, setViewModalIsOpen] = useState(false);
   const [isViewFeedbackSent, setIsViewFeedbackSent] = useState(false);
@@ -42,30 +68,41 @@ const ActivityTeacher = () => {
     setModalIsOpen(false);
   };
   const [state, setState] = useState(initialState);
-  const { name, description, duration, accessCode } = state;
-
-  const history = useHistory();
+  const { courseName, courseDescription, durationInMinutes, accessCode } =
+    state;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!name || !description || !duration || !accessCode) {
-      alert("Please provide value in each input field");
+    if (
+      !courseName ||
+      !courseDescription ||
+      !durationInMinutes ||
+      !accessCode
+    ) {
+      alert(
+        "Please provide value in each input field" +
+          courseName +
+          courseDescription +
+          durationInMinutes +
+          accessCode
+      );
     } else {
-      /* TO DO SERVER PUSH
-        fireDb.child("contacts").push(state, (err) => {
-            if(err) {
-                toast.error(err);
-            } else {
-                toast.success("Contact Added Successfully");
-            }
-        }); */
+      const data = {
+        courseName: courseName,
+        courseDescription: courseDescription,
+        durationInMinutes: durationInMinutes,
+        accessCode: accessCode,
+        published: true,
+      };
+      await axios.post("/api/courses/addCourse", data);
       alert("Contact Added Successfully");
-      setTimeout(() => history.push("/"), 500);
+      // setTimeout(() => history.push("/"), 500);
       sendFeedbackHandler(); //close
+      // history.push("/ActivityStudent");
     }
   };
   return (
@@ -83,7 +120,7 @@ const ActivityTeacher = () => {
             </tr>
           </thead>
           <tbody>
-            {courses.map(course => {
+            {courses.map((course) => {
               return (
                 <tr>
                   <th scope="row">{course.id}</th>
@@ -92,123 +129,136 @@ const ActivityTeacher = () => {
                   <td>{course.durationInMinutes}</td>
                   <td>{course.accessCode}</td>
                   <td>
-                    <button className="btn btn-view" onClick={() => setViewModalIsOpen(true)}>
+                    <button
+                      className="btn btn-view"
+                      onClick={() => {
+                        getDetailSelectedCourse(course.accessCode);
+                      }}
+                    >
                       <b>View</b>
                     </button>
                   </td>
                   <div className="viewModalContainer">
-                {viewModalIsOpen ? (
-                  <>
-                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                      <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                        {/*content*/}
-                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                          {/*header*/}
-                          <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                            <h3 className="text-black text-2xl font-semibold">
-                              Course details
-                            </h3>
-                            <button
-                              className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                              onClick={sendViewFeedbackHandler}
-                            >
-                              <span className="bg-transparent text-black h-6 w-6 text-2xl block outline-none focus:outline-none">
-                                ×
-                              </span>
-                            </button>
-                          </div>
-                          {/*body*/}
-                          <div className="relative p-6 flex-auto">
-                            <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                              Details about this course:
-                            </p>
-                            <div className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                              <form
-                                style={{
-                                  margin: "auto",
-                                  padding: "20px",
-                                  maxWidth: "500px",
-                                  alignContent: "center",
-                                }}
-                                onSubmit={handleSubmit}
-                              >
-                                <label className="nameViewText">
-                                  <b>Name: </b>
-                                  {course.courseName}
-                                </label>
-                                <br></br>
-                                <label className="descriptionViewText">
-                                  <b>Description: </b>
-                                  {course.courseDescription}
-                                </label>
-                                <br></br>
-                                <label className="durationViewText">
-                                  <b>Duration: </b>
-                                  {course.durationInMinutes}
-                                </label>
-                                <br></br>
-                                <label className="accessCodeViewText">
-                                  <b>Access Code: </b>
-                                  {course.accessCode}
-                                </label>
-                                <div className="grid grid-cols-4 mt-4 sm:mt-0 sm:pr-4 gap-1 emojiGrid">
-                                  <div className="mb-auto emojiHover">
-                                    <img
-                                      src={SurprisedFace}
-                                      alt="SurprisedFace"
-                                      className="emojiFace"
-                                      onClick={sendFeedbackHandler}
-                                    />
-                                    {course.feedbackSurprised ? course.feedbackSurprised : 0}
-                                  </div>
-                                  <div className="mb-auto emojiHover">
-                                    <img
-                                      src={SmileyFace}
-                                      alt="SmileyFace"
-                                      className="emojiFace"
-                                      onClick={sendFeedbackHandler}
-                                    />
-                                    {course.feedbackSmiley ? course.feedbackSmiley : 0}
-                                  </div>
-                                  <div className="mb-auto emojiHover">
-                                    <img
-                                      src={AngryFace}
-                                      alt="AngryFace"
-                                      className="emojiFace"
-                                      onClick={sendFeedbackHandler}
-                                    />
-                                    {course.feedbackFrowney ? course.feedbackFrowney : 0}
-                                  </div>
-                                  <div className="mb-auto emojiHover">
-                                    <img
-                                      src={ConfusedFace}
-                                      alt="ConfusedFace"
-                                      className="emojiFace"
-                                      onClick={sendFeedbackHandler}
-                                    />
-                                    {course.feedbackConfused ? course.feedbackConfused : 0}
-                                  </div>
+                    {viewModalIsOpen ? (
+                      <>
+                        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                          <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                            {/*content*/}
+                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                              {/*header*/}
+                              <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                                <h3 className="text-black text-2xl font-semibold">
+                                  Course details
+                                </h3>
+                                <button
+                                  className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                                  onClick={sendViewFeedbackHandler}
+                                >
+                                  <span className="bg-transparent text-black h-6 w-6 text-2xl block outline-none focus:outline-none">
+                                    ×
+                                  </span>
+                                </button>
+                              </div>
+                              {/*body*/}
+                              <div className="relative p-6 flex-auto">
+                                <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                                  Details about this course:
+                                </p>
+                                <div className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                                  <form
+                                    style={{
+                                      margin: "auto",
+                                      padding: "20px",
+                                      maxWidth: "500px",
+                                      alignContent: "center",
+                                    }}
+                                    onSubmit={handleSubmit}
+                                  >
+                                    <label className="nameViewText">
+                                      <b>Name: </b>
+                                      {selectedData.courseName}
+                                    </label>
+                                    <br></br>
+                                    <label className="descriptionViewText">
+                                      <b>Description: </b>
+                                      {selectedData.courseDescription}
+                                    </label>
+                                    <br></br>
+                                    <label className="durationViewText">
+                                      <b>Duration: </b>
+                                      {selectedData.durationInMinutes}
+                                    </label>
+                                    <br></br>
+                                    <label className="accessCodeViewText">
+                                      <b>Access Code: </b>
+                                      {selectedData.accessCode}
+                                    </label>
+                                    <div className="grid grid-cols-4 mt-4 sm:mt-0 sm:pr-4 gap-1 emojiGrid">
+                                      <div className="mb-auto emojiHover">
+                                        <img
+                                          src={SurprisedFace}
+                                          alt="SurprisedFace"
+                                          className="emojiFace"
+                                          onClick={sendFeedbackHandler}
+                                        />
+                                        {selectedData.feedbackSurprised
+                                          ? selectedData.feedbackSurprised
+                                          : 0}
+                                      </div>
+                                      <div className="mb-auto emojiHover">
+                                        <img
+                                          src={SmileyFace}
+                                          alt="SmileyFace"
+                                          className="emojiFace"
+                                          onClick={sendFeedbackHandler}
+                                        />
+                                        {selectedData.feedbackSmiley
+                                          ? selectedData.feedbackSmiley
+                                          : 0}
+                                      </div>
+                                      <div className="mb-auto emojiHover">
+                                        <img
+                                          src={AngryFace}
+                                          alt="AngryFace"
+                                          className="emojiFace"
+                                          onClick={sendFeedbackHandler}
+                                        />
+                                        {selectedData.feedbackFrowney
+                                          ? selectedData.feedbackFrowney
+                                          : 0}
+                                      </div>
+                                      <div className="mb-auto emojiHover">
+                                        <img
+                                          src={ConfusedFace}
+                                          alt="ConfusedFace"
+                                          className="emojiFace"
+                                          onClick={sendFeedbackHandler}
+                                        />
+                                        {selectedData.feedbackConfused
+                                          ? selectedData.feedbackConfused
+                                          : 0}
+                                      </div>
+                                    </div>
+                                  </form>
                                 </div>
-                              </form>
+                              </div>
+                              {/*footer*/}
+                              <div className="flex items-center justify-center p-6 border-t border-solid border-blueGray-200 rounded-b">
+                                <button
+                                  className="bg-purple-400  text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-purple-500"
+                                  type="button"
+                                  onClick={sendViewFeedbackHandler}
+                                >
+                                  Back
+                                </button>
+                              </div>
                             </div>
                           </div>
-                          {/*footer*/}
-                          <div className="flex items-center justify-center p-6 border-t border-solid border-blueGray-200 rounded-b">
-                            <button
-                              className="bg-purple-400  text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-purple-500"
-                              type="button"
-                              onClick={sendViewFeedbackHandler}
-                            >
-                              Back
-                            </button>
-                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                  </>
-                ) : null}
-              </div>
+                        <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                      </>
+                    ) : null}
+                  </div>
                 </tr>
               );
             })}
@@ -258,10 +308,10 @@ const ActivityTeacher = () => {
                       <input
                         className="inputField"
                         type="text"
-                        id="name"
-                        name="name"
+                        name="courseName"
+                        id="courseName"
                         placeholder="Name..."
-                        value={name}
+                        value={courseName}
                         onChange={handleInputChange}
                       ></input>
 
@@ -269,10 +319,10 @@ const ActivityTeacher = () => {
                       <input
                         className="inputField"
                         type="text"
-                        id="description"
-                        name="description"
+                        name="courseDescription"
+                        id="courseDescription"
                         placeholder="Description..."
-                        value={description}
+                        value={courseDescription}
                         onChange={handleInputChange}
                       ></input>
 
@@ -281,11 +331,11 @@ const ActivityTeacher = () => {
                       </label>
                       <input
                         className="inputField"
-                        type="text"
-                        id="duration"
-                        name="duration"
+                        type="number"
+                        name="durationInMinutes"
+                        id="durationInMinutes"
                         placeholder="Duration..."
-                        value={duration}
+                        value={durationInMinutes}
                         onChange={handleInputChange}
                       ></input>
 

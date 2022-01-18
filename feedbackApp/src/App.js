@@ -25,9 +25,9 @@ const App = () => {
             {authCtx.isLoggedIn && (
               <Route exact path="/ActivityStudent" component={ActivityTeacher} />
             )}
-            <Route path="*">
+            {/* <Route path="*">
               <Redirect to="/" />
-            </Route>
+            </Route> */}
           </Switch>
         </div>
       </Router>
