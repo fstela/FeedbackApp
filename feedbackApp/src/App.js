@@ -6,10 +6,9 @@ import { useContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect,
+  Route
 } from "react-router-dom";
-// import "antd/dist/antd.min.css";
+
 import AuthContext from "./store/auth-context";
 
 const App = () => {
