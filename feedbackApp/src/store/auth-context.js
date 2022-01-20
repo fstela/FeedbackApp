@@ -47,7 +47,6 @@ export const AuthContextProvider = (props) => {
 
   const loginHandler = (token, accountType) => {
     accountType === "student" ? setIsStudent(true) : setIsStudent(false);
-    console.log(token, AUTH_TOKEN);
     localStorage.setItem(AUTH_TOKEN, token);
     localStorage.setItem(ACCOUNT_TYPE_KEY, accountType);
     setToken(token);

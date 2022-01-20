@@ -11,7 +11,6 @@ const Activity = () => {
     const history = useHistory();
 
     if(!ctx.isLoggedIn) {
-        console.log("bee");
         history.push("/auth")
     }
 

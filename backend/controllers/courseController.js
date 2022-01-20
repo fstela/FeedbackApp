@@ -97,7 +97,6 @@ const gradeCourse = async (req, res) => {
     return;
   }
 
-  console.log(existingCourse.accessCode, validData.accessCode);
   if (existingCourse.accessCode !== validData.accessCode) {
     res.status(401).json({
       error: "Invalid access code",

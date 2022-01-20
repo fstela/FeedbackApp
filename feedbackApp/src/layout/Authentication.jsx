@@ -28,7 +28,6 @@ const Authentication = (props) => {
   const [authError, setAuthError] = useState(null);
 
   const submitHandler = (event) => {
-    console.log(authCtx);
     event.preventDefault();
     setAuthError(null);
     setIsLoading(true);
