@@ -4,12 +4,9 @@ const db = require("../models");
 const helpers = require("../helpers");
 const auth = require("../service/auth");
 
-
 const Course = db.course;
 
-
 const addCourse = async (req, res) => {
-
   const courseSchema = Joi.object({
     accessCode: Joi.string().required(),
     courseName: Joi.string().required(),
@@ -19,19 +16,21 @@ const addCourse = async (req, res) => {
 
   const validationResult = courseSchema.validate(req.body);
 
-  if(validationResult.error !== undefined) {
+  if (validationResult.error !== undefined) {
     res.status(400).json({
-        "error": helpers.collectValidationError(validationResult.error)
+      error: helpers.collectValidationError(validationResult.error),
     });
     return;
   }
 
   const validData = validationResult.value;
 
-  const existingAccessCode = await Course.findOne({where: {accessCode: validData.accessCode}});
-  if(existingAccessCode) {
+  const existingAccessCode = await Course.findOne({
+    where: { accessCode: validData.accessCode },
+  });
+  if (existingAccessCode) {
     res.status(400).json({
-      "error": "Access code already used"
+      error: "Access code already used",
     });
     return;
   }
@@ -56,11 +55,14 @@ const getAllCourses = async (req, res) => {
   let courses = await Course.findAll({});
   const user = await auth.getCurrentUser(req);
   // filter expired courses
-  courses = courses.filter(course => moment().diff(course.createdAt, 'minutes') <= course.durationInMinutes);
+  courses = courses.filter(
+    (course) =>
+      moment().diff(course.createdAt, "minutes") <= course.durationInMinutes
+  );
 
   // make sure access code is not accesibile by students
-  if(user.userType === "student"){
-    courses = courses.map(course => {
+  if (user.userType === "student") {
+    courses = courses.map((course) => {
       course.accessCode = null;
       return course;
     });
@@ -69,49 +71,52 @@ const getAllCourses = async (req, res) => {
   res.send(courses);
 };
 
-const gradeCourse = async(req, res) => {
-
+const gradeCourse = async (req, res) => {
   const gradeSchema = Joi.object({
     accessCode: Joi.string().required(),
-    grade: Joi.string().valid("smiley", "frowney", "surprised", "confused").required(),
+    grade: Joi.string()
+      .valid("smiley", "frowney", "surprised", "confused")
+      .required(),
   });
 
   const validationResult = gradeSchema.validate(req.body);
-  if(validationResult.error !== undefined) {
+  if (validationResult.error !== undefined) {
     res.status(400).json({
-        "error": helpers.collectValidationError(validationResult.error)
+      error: helpers.collectValidationError(validationResult.error),
     });
     return;
   }
 
   const validData = validationResult.value;
 
-  const existingCourse = await Course.findOne({where: {id: req.params.id}});
-  if(!existingCourse) {
+  const existingCourse = await Course.findOne({ where: { id: req.params.id } });
+  if (!existingCourse) {
     res.status(404).json({
-      "error": "Course not found"
+      error: "Course not found",
     });
     return;
   }
 
   console.log(existingCourse.accessCode, validData.accessCode);
-  if(existingCourse.accessCode !== validData.accessCode) {
+  if (existingCourse.accessCode !== validData.accessCode) {
     res.status(401).json({
-      "error": "Invalid access code"
+      error: "Invalid access code",
     });
     return;
   }
 
-  if(moment().diff(existingCourse.createdAt, 'minutes') > existingCourse.durationInMinutes) {
+  if (
+    moment().diff(existingCourse.createdAt, "minutes") >
+    existingCourse.durationInMinutes
+  ) {
     res.status(401).json({
-      "error": "This feedback session has ended"
+      error: "This feedback session has ended",
     });
     return;
   }
 
-
-  let updateData 
-  switch(validData.grade) {
+  let updateData;
+  switch (validData.grade) {
     case "smiley":
       existingCourse.feedbackSmiley++;
       break;
@@ -129,12 +134,11 @@ const gradeCourse = async(req, res) => {
   try {
     await existingCourse.save();
     res.sendStatus(200);
-  } catch(e) {
+  } catch (e) {
     console.log(e);
     res.sendStatus(500);
   }
-  
-}
+};
 
 // const getOneCourse = async (req, res) => {
 //   let id = req.params.accessCode;
@@ -162,7 +166,7 @@ const gradeCourse = async(req, res) => {
 module.exports = {
   addCourse,
   getAllCourses,
-  gradeCourse
+  gradeCourse,
   // getOneCourse,
   // updateCourse,
   // deleteCourse,

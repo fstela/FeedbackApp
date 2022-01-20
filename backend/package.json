@@ -4,7 +4,8 @@
   "description": "node express crud api with seq",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "pretty": "prettier --write '**/*.{ts,js,tsx,scss,css,html}'"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "mysql2": "^2.3.3",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
+    "prettier": "^2.5.1",
     "sequelize": "^6.13.0"
   }
 }

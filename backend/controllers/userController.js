@@ -4,10 +4,9 @@ const db = require("../models");
 
 const User = db.user;
 
-
 const getAllUsers = async (req, res) => {
   let users = await User.findAll({});
-  users.map(user => delete user.password);
+  users.map((user) => delete user.password);
   res.send(users);
 };
 
@@ -32,7 +31,7 @@ const getOneUser = async (req, res) => {
 
 const getPublishedUser = async (req, res) => {
   const users = await User.findAll({ where: { published: true } });
-  users.map(user => delete user.password);
+  users.map((user) => delete user.password);
   res.status(200).send(users);
 };
 
