@@ -215,7 +215,7 @@ const ViewGradesModal = (props) => {
                       <img
                         src="/media/SurprisedFace.svg"
                         alt="SurprisedFace"
-                        className="emojiFace"
+                        className="emojiFace emojiFaceSmall"
                       />
                       {selectedData.feedbackSurprised
                         ? selectedData.feedbackSurprised
@@ -225,7 +225,7 @@ const ViewGradesModal = (props) => {
                       <img
                         src="/media/SmileyFace.svg"
                         alt="SmileyFace"
-                        className="emojiFace"
+                        className="emojiFace emojiFaceSmall"
                       />
                       {selectedData.feedbackSmiley
                         ? selectedData.feedbackSmiley
@@ -235,7 +235,7 @@ const ViewGradesModal = (props) => {
                       <img
                         src="/media/AngryFace.svg"
                         alt="AngryFace"
-                        className="emojiFace"
+                        className="emojiFace emojiFaceSmall"
                       />
                       {selectedData.feedbackFrowney
                         ? selectedData.feedbackFrowney
@@ -245,7 +245,7 @@ const ViewGradesModal = (props) => {
                       <img
                          src="/media/ConfusedFace.svg"
                         alt="ConfusedFace"
-                        className="emojiFace"
+                        className="emojiFace emojiFaceSmall"
                       />
                       {selectedData.feedbackConfused
                         ? selectedData.feedbackConfused
@@ -325,7 +325,7 @@ const ActivityTeacher = () => {
           <tbody>
             {courses.map((course) => {
               return (
-                <tr class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <tr className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <th className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{course.id}</th>
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{course.courseName}</td>
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">{course.courseDescription}</td>

@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import Card from '../../../layout/Card';
-import CourseData from '../../../layout/CourseData';
+import axios from "../../../service/http";
+
 import "./ActivityStudent.css";
 
 const ActivityStudent = () =>{
+
+  const [courses, setCourses] = useState([]);
+
+  const fetchCourses = () => {
+    axios.get("/api/courses").then((response) => {
+      console.log(response.data);
+      setCourses(response.data)
+    })
+  }
+  
+
+  useEffect(() => {
+    
+    fetchCourses();
+  }, [])
+
   return (
     <React.Fragment>
       <div className='introSection my-5'>
@@ -13,18 +31,12 @@ const ActivityStudent = () =>{
       <div className='container mx-auto flex flex-wrap items-start'>
         <div className='row p-5'>
           <div className='col-8 mx-auto'>
-            <div className="row gy-4 p-7">
+            <div className="row gy-4 p-7 gap-10">
              {
-              CourseData.map((val, ind) =>{
-                return <Card key={ind}
-
-                    imgsrc={val.imgsrc}
-                    title={val.title}
-
-                />
+              courses.map((course, index) =>{
+                return <Card key={index} data={course}/>
               })
              }
-
             </div>   
           </div>
         </div>

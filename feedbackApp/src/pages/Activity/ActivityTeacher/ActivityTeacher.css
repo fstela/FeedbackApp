@@ -1,5 +1,3 @@
-
-
 /* .btn {
     border: none;
     color: white;
@@ -14,59 +12,66 @@
 } */
 
 .btn-view {
-    background-color: #e7e7e7;
-    color: black;
+  background-color: #e7e7e7;
+  color: black;
 }
 
 .btn-view:hover {
-    background-color: #c5c4c4;
+  background-color: #c5c4c4;
 }
 
 .nameViewText,
 .descriptionViewText,
 .durationViewText,
 .accessCodeViewText {
-    color:rgba(0, 0, 0, 0.719)
+  color: rgba(0, 0, 0, 0.719);
 }
 
 .emojiGrid {
-    padding-top: 20px;
-    position: relative;
-    justify-items: left;
-    justify-self: center;
-  }
-  
-  .emojiFace {
-    min-width: 40px;
-    min-height: 40px;
-    width: 40px;
-    height: 40px;
-  }
+  padding-top: 20px;
+  position: relative;
+  justify-items: left;
+  justify-self: center;
+}
 
-  .addButton {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 350px;
-    background-color: rgba(123, 0, 255, 0.507);
-    margin-top: 20px;
-  }
+.emojiFace {
+  min-width: 40px;
+  min-height: 40px;
+  width: 100%;
+}
 
-  .addButton:hover {
-    background-color: rgba(123, 0, 255, 0.815);
-  }
+.emojiFaceSmall {
+  width: 40px!important;
+  height: 40px!important;
+}
+.emojiHover {
+  width: 100%;
+}
 
-  .inputField {
-    border: 2px solid rgba(175, 114, 241, 0.301);
-    border-radius: 4px;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
+.addButton {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  background-color: rgba(123, 0, 255, 0.507);
+  margin-top: 20px;
+}
+
+.addButton:hover {
+  background-color: rgba(123, 0, 255, 0.815);
+}
+
+.inputField {
+  border: 2px solid rgba(175, 114, 241, 0.301);
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
 }
 
 .btn-add {
-    background-color: #a549e3;
-    color: white;
+  background-color: #a549e3;
+  color: white;
 }

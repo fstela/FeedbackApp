@@ -2,8 +2,8 @@ const Joi = require("joi");
 const moment = require("moment");
 const db = require("../models");
 const helpers = require("../helpers");
+const auth = require("../service/auth");
 
-//create main Model
 
 const Course = db.course;
 
@@ -52,10 +52,20 @@ const addCourse = async (req, res) => {
   }
 };
 
-const getAllCourses = async (_, res) => {
+const getAllCourses = async (req, res) => {
   let courses = await Course.findAll({});
+  const user = await auth.getCurrentUser(req);
   // filter expired courses
-  courses = courses.filter(course => moment().diff(course.createdAt, 'minutes') <= course.durationInMinutes)
+  courses = courses.filter(course => moment().diff(course.createdAt, 'minutes') <= course.durationInMinutes);
+
+  // make sure access code is not accesibile by students
+  if(user.userType === "student"){
+    courses = courses.map(course => {
+      course.accessCode = null;
+      return course;
+    });
+  }
+
   res.send(courses);
 };
 

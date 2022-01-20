@@ -52,9 +52,16 @@ const isHashOfPassword = async (hash, plainPassword) => {
     return await bcrypt.compare(plainPassword, hash);
 }
 
+/** Get user based on request auth token */
+const getCurrentUser = async (req) => {
+    const jwt_payload = jwt.decode(req.headers.authorization.substring(7));
+    return await User.findOne({where: {id: jwt_payload.sub}})
+}
+
 module.exports = {
     generateJwtToken,
     strategy,
     hashPassword,
-    isHashOfPassword
+    isHashOfPassword,
+    getCurrentUser
 }

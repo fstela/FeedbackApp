@@ -4,10 +4,9 @@
 
 .modal {
   position: absolute;
-  top: 150px;
-  left: 350px;
-  right: 350px;
-  bottom: 150px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border: 1px solid #ccc;
   background-color: #fff;
   overflow: hidden;
@@ -53,7 +52,6 @@
 
 #accessCode{
   border: 1px solid grey;
-  margin-left: 5px;
 }
 
 #accessCodeText{
