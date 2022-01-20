@@ -1,8 +1,8 @@
 import { React, useState } from "react";
-import SurprisedFace from "../assets/images/SurprisedFace.svg";
-import AngryFace from "../assets/images/AngryFace.svg";
-import SmileyFace from "../assets/images/SmileyFace.svg";
-import ConfusedFace from "../assets/images/ConfusedFace.svg";
+// import SurprisedFace from "../assets/images/SurprisedFace.svg";
+// import AngryFace from "../assets/images/AngryFace.svg";
+// import SmileyFace from "../assets/images/SmileyFace.svg";
+// import ConfusedFace from "../assets/images/ConfusedFace.svg";
 import Modal from "react-modal";
 import "./Card.css";
 
@@ -19,11 +19,11 @@ const Card = (props) => {
   
   return (
     <>
-      <div class="max-w-sm rounded overflow-hidden shadow-lg col-md-4 p-4 col-10 mx-auto m-3">
-        <img class="w-full" src={props.imgsrc} alt=""></img>
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">{props.title}</div>
-          <p class="text-gray-700 text-base">
+      <div className="max-w-sm rounded overflow-hidden shadow-lg col-md-4 p-4 col-10 mx-auto m-3">
+        <img className="w-full" src={props.imgsrc} alt=""></img>
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">{props.title}</div>
+          <p className="text-gray-700 text-base">
             This is a description about the course you are taking.
           </p>
             <label id="accessCodeText" for="accessCode">Course Access Code: </label>
@@ -50,16 +50,16 @@ const Card = (props) => {
           >
             <div className="grid justify-items-center grid-cols-2 mt-4 sm:mt-0 sm:pr-4 gap-12 emojiGrid">
               <div className="mb-auto emojiHover">
-                <img src={SurprisedFace} alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
+                <img src="/media/SurprisedFace.svg" alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
               </div>
               <div className="mb-auto emojiHover">
-                <img src={SmileyFace} alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
+                <img src="/media/SmileyFace.svg" alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
               </div>
               <div className="mb-auto emojiHover">
-                <img src={AngryFace} alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
+                <img src="/media/AngryFace.svg" alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
               </div>
               <div className="mb-auto emojiHover">
-                <img src={ConfusedFace} alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
+                <img src="/media/ConfusedFace.svg" alt="" className="emojiFace" onClick={sendFeedbackHandler}/>
               </div>
             </div>
           </Modal>

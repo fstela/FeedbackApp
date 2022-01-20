@@ -1,6 +1,6 @@
 import React from 'react'
-import Card from '../layout/Card';
-import CourseData from '../layout/CourseData';
+import Card from '../../../layout/Card';
+import CourseData from '../../../layout/CourseData';
 import "./ActivityStudent.css";
 
 const ActivityStudent = () =>{
@@ -13,7 +13,7 @@ const ActivityStudent = () =>{
       <div className='container mx-auto flex flex-wrap items-start'>
         <div className='row p-5'>
           <div className='col-8 mx-auto'>
-            <div class="row gy-4 p-7">
+            <div className="row gy-4 p-7">
              {
               CourseData.map((val, ind) =>{
                 return <Card key={ind}

@@ -6,20 +6,15 @@ const helpers = require("../helpers");
 
 const User = db.user;
 
-const registerSchema = Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
-    userType: Joi.string().valid("student", "teacher").required()
-});
-
-
-const loginSchema = Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().required()
-});
 
 const register = async (req, res) => {
     
+    const registerSchema = Joi.object({
+        email: Joi.string().email().required(),
+        password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
+        userType: Joi.string().valid("student", "teacher").required()
+    });
+
     const validationResult = registerSchema.validate(req.body);
 
     if(validationResult.error !== undefined) {
@@ -46,8 +41,8 @@ const register = async (req, res) => {
             password: hashOfPassword,
             userType: validData.userType
         });
-        console.log("ccc");
-        res.status(201).json({token: auth.generateJwtToken(user)});
+
+        res.status(201).json({token: auth.generateJwtToken(user), userType: user.userType});
     } catch(e) {
         console.log(e);
         // database error
@@ -60,6 +55,11 @@ const register = async (req, res) => {
 const INVALID_LOGIN_DATA_MESSAGE = { "error": "Invalid login data" }
 
 const login = async (req, res) => {
+    const loginSchema = Joi.object({
+        email: Joi.string().email().required(),
+        password: Joi.string().required()
+    });
+
     const validationResult = loginSchema.validate(req.body);
 
     if(validationResult.error !== undefined) {
@@ -83,7 +83,7 @@ const login = async (req, res) => {
         return;
     }
 
-    res.status(201).json({token: auth.generateJwtToken(existingUser)});
+    res.status(200).json({token: auth.generateJwtToken(existingUser), userType: existingUser.userType});
 }
 
 module.exports = {

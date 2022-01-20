@@ -1,8 +1,8 @@
 module.exports = {
     app: {
         port: 8080,
-        allowCorsForUrl: "http://localhost:9000",
-        enableCors: false
+        allowCorsForUrl: "http://localhost:3000",
+        enableCors: true
     },
     db: {
         HOST: "localhost",

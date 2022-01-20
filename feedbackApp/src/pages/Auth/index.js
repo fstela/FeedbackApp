@@ -1,5 +1,5 @@
 import React from "react";
-import Authentication from "../layout/Authentication";
+import Authentication from "../../layout/Authentication";
 import "./Login.css";
 
 const Login = () => {

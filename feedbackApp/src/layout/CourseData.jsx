@@ -1,4 +1,5 @@
-import coursePic from '../assets/images/coursePic.jpg';
+
+const coursePic = "/media/coursePic.jpg";
 
 const CourseData = [
     {

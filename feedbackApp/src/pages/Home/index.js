@@ -1,22 +1,12 @@
 import React from "react";
-import { Layout } from "../layout";
-import "./Home.css";
-import background from "../AdobeStock_369243587.jpeg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Layout } from "../../layout";
 
+import "./Home.css";
 
-
-<button class="btn btn-ghost">ghost</button>;
 
 const Home = (img, alt, imgStart) => {
-  const [studentToLogIn, setStudentToLogIn] = useState(true);
-  let studentToLogIn2 = true;
-  const switchAccountTypeHandler = () => {
-    setStudentToLogIn((prevState) => !prevState);
-    studentToLogIn2 = studentToLogIn;
-  };
-  //console.log("11111");
+
   return (
       <div className="homePage h-full mb-auto row"
            style={{ 
@@ -37,17 +27,18 @@ const Home = (img, alt, imgStart) => {
               </h6>
 
               <div className="btns">
-                <div class="box-1">
-                  <Link to={"/login"}>
-                    <div className="btn btn-one" onClick={!studentToLogIn ? switchAccountTypeHandler : 0}>
+                <div className="box-1">
+                  <Link to={"/auth?type=student"}>
+                    <div className="btn " >
+                    {/* btn-one btn-teacher */}
                       <span>Continue as a student</span>
                     </div>
                   </Link>
                 
                 </div>
-                <div class="box-2">
-                  <Link to={"/login"}>
-                    <div className="btn btn-one btn-teacher" onClick={studentToLogIn ? switchAccountTypeHandler : 0}>
+                <div className="box-2">
+                  <Link to={"/auth?type=teacher"}>
+                    <div className="btn " >
                     <span>Continue as a teacher</span>
                     </div>
                   </Link>
@@ -55,11 +46,12 @@ const Home = (img, alt, imgStart) => {
               </div>
             </div>
             <div className="home__hero-img-wrapper">
-            <img src={background} alt={alt} className='hero__hero-img'></img>
+            <img src="/media/home.jpeg" alt={alt} className='hero__hero-img'></img>
           </div>
         </div>
         </Layout>
       </div>
   );
 };
+
 export default Home;

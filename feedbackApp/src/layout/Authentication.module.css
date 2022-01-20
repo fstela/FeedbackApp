@@ -17,6 +17,11 @@
   display: flex;
   justify-items: center;
   margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.users div:hover {
+  border: 1px solid #453daf;
 }
 
 .logo {
@@ -36,15 +41,32 @@
   text-align: center;
   color: rgb(0, 0, 0);
   size: 1rem;
+  margin-bottom: 2rem;
 }
+
 
 .control {
   margin-bottom: 0.5rem;
+  margin-top: 2rem;
 }
 
-.control label {
+.accountType {
+  display: flex;
+}
+
+.accountType span {
+  color: red;
+}
+.error p{
+  color: red;
+  margin: 20px;
+  font-size: 13px;
+}
+
+.accountType p, .control label {
   display: block;
-  color: white;
+  font-size: 12px;
+  float: left;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }

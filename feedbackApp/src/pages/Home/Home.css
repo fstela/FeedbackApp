@@ -52,6 +52,11 @@
   border:1px solid rgba(154, 60, 255, 0.6);
   background-color: #fff;
   border-radius: 50px;
+ 
+}
+
+.box-2 span { 
+  color: rgba(154, 60, 255, 0.6);
 }
 
 .btn {
@@ -60,6 +65,12 @@
   text-align: center;
   width: 200px;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  font-size: 14px;
+
 }
 
 .btn-one {
@@ -67,10 +78,11 @@
   transition: all 0.3s;
   position: relative;
 }
+
 .btn-one span {
   transition: all 0.3s;
-
 }
+
 .btn-one::before {
   content: "";
   position: absolute;

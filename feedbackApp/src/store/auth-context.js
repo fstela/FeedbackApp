@@ -1,78 +1,68 @@
 import { useState, useEffect } from "react";
 import React from "react";
+import {AUTH_TOKEN} from "../service/http";
+
+const ACCOUNT_TYPE_KEY = "ACCOUNT_TYPE";
+
 const AuthContext = React.createContext({
   token: "",
-  isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
-  // type: string // student / teacher
+  isLoggedIn: false,
+  isStudent: false,
+  isTeacher: false
 });
 
-let logoutTimer;
 
 const retrieveStoredToken = () => {
-  const storedToken = localStorage.getItem("token");
-  const storedExpirationDate = localStorage.getItem("expirationTime");
+  const storedToken = localStorage.getItem(AUTH_TOKEN);
+  return storedToken;
+};
 
-  const remainingTime = CalculateRemainingTime(storedExpirationDate);
-  if (remainingTime <= 3600) {
-    localStorage.removeItem("token");
-    localStorage.removeItem("expirationTime");
-    return null;
+
+const retriveAccountType = () => {
+  const status = {
+    isStudent: false,
+    isTeacher: false
   }
-  return {
-    token: storedToken,
-    duration: remainingTime,
-  };
-};
+  const type = localStorage.getItem("ACCOUNT_TYPE");
+  if(type) {
+    type === "student" ? status.isStudent = true : status.isTeacher = true;
+  }
 
-const CalculateRemainingTime = (expirationTime) => {
-  const currentTime = new Date().getTime();
-  const adjExpirationTime = new Date(expirationTime).getTime();
+  return status;
+}
 
-  const remainingTime = adjExpirationTime - currentTime;
-  return remainingTime;
-};
 
 export const AuthContextProvider = (props) => {
   const tokenData = retrieveStoredToken();
-  let initialToken;
-  if (tokenData) {
-    initialToken = tokenData.token;
-  }
-  const [token, setToken] = useState(initialToken);
-
+  const accountData = retriveAccountType();
+  const [token, setToken] = useState(tokenData ? tokenData : undefined);
+  const [isStudent, setIsStudent] = useState(accountData.isStudent);
   const userIsLoggedIn = !!token;
   //if string token is empty returns false, else returns true
 
   const logoutHandler = () => {
     setToken(null);
-    localStorage.removeItem("token");
-    localStorage.removeItem("expirationTime");
-    if (logoutTimer) {
-      clearTimeout(logoutTimer);
-    }
+    localStorage.removeItem(AUTH_TOKEN);
+    localStorage.removeItem(ACCOUNT_TYPE_KEY)
   };
 
-  const loginHandler = (token, expirationTime) => {
-    localStorage.setItem("token", token);
+  const loginHandler = (token, accountType) => {
+    accountType === "student" ? setIsStudent(true) : setIsStudent(false);
+    console.log(token, AUTH_TOKEN);
+    localStorage.setItem(AUTH_TOKEN, token);
+    localStorage.setItem(ACCOUNT_TYPE_KEY, accountType);
     setToken(token);
-    localStorage.setItem("expirationTime", expirationTime);
-    const remainingTime = CalculateRemainingTime(expirationTime);
-    logoutTimer = setTimeout(logoutHandler, remainingTime);
   };
-
-  useEffect(()=>{
-    if(tokenData){
-      logoutTimer = setTimeout(logoutHandler, tokenData.duration);
-    }
-  },[tokenData]);
 
   const contextValue = {
     token: token,
-    isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
+    isLoggedIn: userIsLoggedIn,
+    isStudent: isStudent,
+    isTeacher: !isStudent
   };
 
   return (

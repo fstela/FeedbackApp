@@ -7,8 +7,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const navs = [
   { path: "/", name: "Home" },
-  { path: "/login", name: "Login" },
-  { path: "/ActivityStudent", name: "Activity" },
+  { path: "/auth", name: "Login" },
+  { path: "/activity", name: "Activity" },
 ];
 
 const Nav = () => {

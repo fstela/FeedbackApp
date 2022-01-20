@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import SurprisedFace from "../assets/images/SurprisedFace.svg";
-import AngryFace from "../assets/images/AngryFace.svg";
-import SmileyFace from "../assets/images/SmileyFace.svg";
-import ConfusedFace from "../assets/images/ConfusedFace.svg";
-import "./AddModal.css";
-import "./ActivityTeacher.css";
 import axios from "axios";
+
+import "./ActivityTeacher.css";
 
 const initialState = {
   name: "",
@@ -196,7 +192,7 @@ const ActivityTeacher = (history) => {
                                     <div className="grid grid-cols-4 mt-4 sm:mt-0 sm:pr-4 gap-1 emojiGrid">
                                       <div className="mb-auto emojiHover">
                                         <img
-                                          src={SurprisedFace}
+                                          src="/media/SurprisedFace.svg"
                                           alt="SurprisedFace"
                                           className="emojiFace"
                                           onClick={sendFeedbackHandler}
@@ -207,7 +203,7 @@ const ActivityTeacher = (history) => {
                                       </div>
                                       <div className="mb-auto emojiHover">
                                         <img
-                                          src={SmileyFace}
+                                          src="/media/SmileyFace.svg"
                                           alt="SmileyFace"
                                           className="emojiFace"
                                           onClick={sendFeedbackHandler}
@@ -218,7 +214,7 @@ const ActivityTeacher = (history) => {
                                       </div>
                                       <div className="mb-auto emojiHover">
                                         <img
-                                          src={AngryFace}
+                                          src="/media/AngryFace.svg"
                                           alt="AngryFace"
                                           className="emojiFace"
                                           onClick={sendFeedbackHandler}
@@ -229,7 +225,7 @@ const ActivityTeacher = (history) => {
                                       </div>
                                       <div className="mb-auto emojiHover">
                                         <img
-                                          src={ConfusedFace}
+                                           src="/media/ConfusedFace.svg"
                                           alt="ConfusedFace"
                                           className="emojiFace"
                                           onClick={sendFeedbackHandler}
