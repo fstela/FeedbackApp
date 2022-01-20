@@ -21,7 +21,6 @@ const Authentication = (props) => {
   const history = useHistory();
   const [isLogin, setIsLogin] = useState(true);
   const [isStudent, setIsStudent] = useState(query.get("type") === "student" ? true : false);
-  const [isStudentEmailValid, setStudentEmailValid] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -42,10 +41,9 @@ const Authentication = (props) => {
       password: passwordInputRef.current.value,
       userType: isStudent ? "student" : "teacher"
     }).then((res) => {
-      
-      console.log(res);
       authCtx.login(res.data.token, res.data.userType);
       setIsLoading(false);
+      history.push("/activity");
     }, (err) => {
       setAuthError(err.response.data.error);
       setIsLoading(false);
@@ -61,11 +59,10 @@ const Authentication = (props) => {
       email: emailInputRef.current.value,
       password: passwordInputRef.current.value,
     }).then((res) => {
-      console.log(res);
       authCtx.login(res.data.token, res.data.userType);
       setIsLoading(false);
+      history.push("/activity");
     }, (err) => {
-      // console.log(err.response.data.error);
       setAuthError(err.response.data.error);
       setIsLoading(false);
     }).catch(err => {

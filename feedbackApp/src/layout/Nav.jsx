@@ -62,7 +62,7 @@ const Nav = () => {
             navs
               .filter((e) => e.name === "Login")
               .map((navItem) => (
-                <button className="text-red-400" onClick={logoutHandler}>
+                <button className="text-red-400" onClick={logoutHandler} key={navItem.path}>
                   Log out
                 </button>
               ))}
