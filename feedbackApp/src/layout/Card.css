@@ -29,7 +29,6 @@
   min-height: 50px;
   width: 200px;
   height: 200px;
-
 }
 
 .emojiHover {
@@ -45,16 +44,18 @@
   -webkit-transition-property: box-shadow, transform;
   transition-property: box-shadow, transform;
 }
-.emojiHover:hover, .emojiHover:focus, .emojiHover:active {
-   -webkit-transform: scale(1.1);
-  transform: scale(1.1); 
+.emojiHover:hover,
+.emojiHover:focus,
+.emojiHover:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-#accessCode{
+#accessCode {
   border: 1px solid grey;
 }
 
-#accessCodeText{
- font-weight: 700;
- color:#3B82F6
+#accessCodeText {
+  font-weight: 700;
+  color: #3b82f6;
 }

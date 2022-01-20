@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import {AUTH_TOKEN} from "../service/http";
+import { AUTH_TOKEN } from "../service/http";
 
 const ACCOUNT_TYPE_KEY = "ACCOUNT_TYPE";
 
@@ -10,29 +10,26 @@ const AuthContext = React.createContext({
   logout: () => {},
   isLoggedIn: false,
   isStudent: false,
-  isTeacher: false
+  isTeacher: false,
 });
-
 
 const retrieveStoredToken = () => {
   const storedToken = localStorage.getItem(AUTH_TOKEN);
   return storedToken;
 };
 
-
 const retriveAccountType = () => {
   const status = {
     isStudent: false,
-    isTeacher: false
-  }
+    isTeacher: false,
+  };
   const type = localStorage.getItem("ACCOUNT_TYPE");
-  if(type) {
-    type === "student" ? status.isStudent = true : status.isTeacher = true;
+  if (type) {
+    type === "student" ? (status.isStudent = true) : (status.isTeacher = true);
   }
 
   return status;
-}
-
+};
 
 export const AuthContextProvider = (props) => {
   const tokenData = retrieveStoredToken();
@@ -45,7 +42,7 @@ export const AuthContextProvider = (props) => {
   const logoutHandler = () => {
     setToken(null);
     localStorage.removeItem(AUTH_TOKEN);
-    localStorage.removeItem(ACCOUNT_TYPE_KEY)
+    localStorage.removeItem(ACCOUNT_TYPE_KEY);
   };
 
   const loginHandler = (token, accountType) => {
@@ -62,7 +59,7 @@ export const AuthContextProvider = (props) => {
     logout: logoutHandler,
     isLoggedIn: userIsLoggedIn,
     isStudent: isStudent,
-    isTeacher: !isStudent
+    isTeacher: !isStudent,
   };
 
   return (

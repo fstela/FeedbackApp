@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap%27");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap%27");
 
-.row{
+.row {
   display: flex;
   margin-right: -15px;
   margin-bottom: -15px;
@@ -25,7 +25,6 @@
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   overflow-wrap: break-word;
- 
 }
 
 .homeDescription {
@@ -49,13 +48,12 @@
 }
 
 .box-2 {
-  border:1px solid rgba(154, 60, 255, 0.6);
+  border: 1px solid rgba(154, 60, 255, 0.6);
   background-color: #fff;
   border-radius: 50px;
- 
 }
 
-.box-2 span { 
+.box-2 span {
   color: rgba(154, 60, 255, 0.6);
 }
 
@@ -70,7 +68,6 @@
 
 .btn:hover {
   font-size: 14px;
-
 }
 
 .btn-one {
@@ -103,12 +100,10 @@
 }
 .btn-one:hover span {
   letter-spacing: 1px;
-  
 }
 .btn-one:hover::before {
   opacity: 1;
   transform: scale(1, 1);
- 
 }
 .btn-one::after {
   content: "";
@@ -126,13 +121,12 @@
   transform: scale(0.1, 1);
 }
 
-.btn-teacher span{
-  color:#9A3CFF99;
+.btn-teacher span {
+  color: #9a3cff99;
   font-weight: 100px;
 }
-.btn-teacher{
+.btn-teacher {
   color: rgba(154, 60, 255, 0.6);
-  
 }
 
 .btns {
@@ -149,24 +143,24 @@
   color: rgb(255, 255, 255);
 }
 
-.col{
+.col {
   margin-bottom: 15px;
   margin-right: 15px;
   padding-left: 15px;
-  flex:1;
-  max-width: 100%; 
-  display:flex;
+  flex: 1;
+  max-width: 100%;
+  display: flex;
 }
-.home__hero-text-wrapper{
+.home__hero-text-wrapper {
   max-width: 540px;
   padding-top: 0;
   padding-bottom: 60px;
 }
 
-.home__hero-img-wrapper{
+.home__hero-img-wrapper {
   max-width: 1300px;
 }
-.home__hero-img{
+.home__hero-img {
   max-width: 95%;
   margin-top: 0;
   margin-right: 0;
@@ -174,32 +168,30 @@
   padding-right: 0;
 }
 
-img{
+img {
   max-width: 100%;
   vertical-align: middle;
   display: inline-block;
 }
-@media screen and (max-width:991px) {
-  .container{
+@media screen and (max-width: 991px) {
+  .container {
     padding-right: 10px;
     padding-left: 30px;
   }
 }
 
-@media screen and (max-width:991px) {
-  .home__hero-text-wrapper{
+@media screen and (max-width: 991px) {
+  .home__hero-text-wrapper {
     padding-bottom: 65px;
   }
 
-  .col{
+  .col {
     max-width: 100%;
     flex-basis: 100%;
   }
-
 }
-@media screen and (max-width:750px) {
-  .box-1{
+@media screen and (max-width: 750px) {
+  .box-1 {
     margin-right: 5px;
   }
-} 
-
+}

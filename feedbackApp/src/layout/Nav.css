@@ -1,20 +1,20 @@
 .NavLink {
-    text-decoration: underline;
-    text-underline-offset: 21px;
-    text-decoration-color: #7913bd;
+  text-decoration: underline;
+  text-underline-offset: 21px;
+  text-decoration-color: #7913bd;
 }
 
 .Title {
-    color: black;
-    justify-content: left;
-    font-size: large;
-    margin-right: 50px;
+  color: black;
+  justify-content: left;
+  font-size: large;
+  margin-right: 50px;
 }
 
 #AppText {
-    color:#a549e3;
+  color: #a549e3;
 }
 
 nav {
-    border-bottom: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
 }
